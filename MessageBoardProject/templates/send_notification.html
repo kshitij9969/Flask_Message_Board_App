@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class="container">
+    <section class="text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+    <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+      <h1 class="title-font font-medium text-3xl text-gray-900">Send Notifications</h1>
+      <p class="leading-relaxed mt-4">This section allows you to send messages to your team mates through email.</p>
+    </div>
+    <div class="lg:w-5/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Send Notifications</h2>
+        <form method="POST">
+        {{ form.hidden_tag()}}
+      <div class="relative mb-4">
+        {{ wtf.form_field(form.subject, class='form-control', placeholder='Subject')}}
+      </div>
+      <div class="relative mb-4">
+        {{ wtf.form_field(form.message, class='form-control', placeholder='Message')}}
+          </div>
+        <div class="relative mb-4">
+        {{ wtf.form_field(form.receivers, class='form-control', placeholder='Receivers')}}
+        </div>
+            <div class="relative mb-4">
+        {{ wtf.form_field(form.send, class='btn btn-primary')}}
+        </div>
+   </form>
+    </div>
+  </div>
+</section>
+</div>
+{% endblock %}
