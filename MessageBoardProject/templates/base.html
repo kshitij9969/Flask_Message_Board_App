@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
-<div class="container">
-    <div class=”collapse navbar-collapse” id=”navbarCollapse”>
-    <ul class="nav">
-          <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('core.index') }}">Home</a>
-  </li>
+<header class="text-gray-700 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-orange-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span class="ml-3 text-xl">Project Management App</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('core.index') }}">Home</a>
         <!-- Check if user is authenticated  -->
 
         {% if current_user.is_authenticated %}<!-- first if -->
@@ -22,34 +27,16 @@
         <!-- if the user is a project manager and has a project created -->
         {% if current_user.associated_project_id %} <!-- third if -->
 
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('projects.update_project') }}">Update Project</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('projects.add_associates_to_project') }}">Add associates</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('activity.add_activity') }}">Add activity</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('notification.send_notification') }}">Send Notification</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.view_details') }}">View profile</a>
-  </li>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('projects.update_project') }}">Update Project</a>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('projects.add_associates_to_project') }}">Add associates</a>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('activity.add_activity') }}">Add activity</a>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('notification.send_notification') }}">Send Notification</a>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.logout') }}">Logout</a>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.view_details') }}">View profile</a>
 {% else %} <!-- third if else-->
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('projects.create_project') }}">Create Project</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.view_details') }}">View profile</a>
-  </li>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('projects.create_project') }}">Create Project</a>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.logout') }}">Logout</a>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.view_details') }}">View profile</a>
 {% endif %} <!-- third if closed -->
 
 
@@ -59,44 +46,35 @@
 {% else %}
         <!--  if the user is associate and is associated to a project --->
         {% if current_user.associated_project_id %}<!-- fourth if -->
-<li class="nav-item">
-    <a class="nav-link" href="{{ url_for('activity.add_activity') }}">Add activity</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('notification.send_notification') }}">Send Notification</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.view_details') }}">View profile</a>
-  </li>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('activity.add_activity') }}">Add activity</a>
+
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('notification.send_notification') }}">Send Notification</a>
+
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.logout') }}">Logout</a>
+
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.view_details') }}">View profile</a>
         <!--  if the user is associate and is not associated to a project --->
         {% else %}<!-- else for fourth if -->
-                <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
-  </li>
-        <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.view_details') }}">View profile</a>
-  </li>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.logout') }}">Logout</a>
+
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.view_details') }}">View profile</a>
 {% endif %}<!-- fourth if closed -->
 {% endif %}<!-- second if closed -->
 
         <!-- User is not authenticated then ask to register or login -->
         {% else %}<!-- else for first if -->
-  <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.user_login') }}">Login</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('users.registration') }}">Register</a>
-  </li>
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.user_login') }}">Login</a>
+
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('users.registration') }}">Register</a>
+
         {% endif %}<!-- first if closed -->
-          <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('core.permissions') }}">View permissions</a>
-  </li>
-</ul>
-</div>
-    </div>
+
+    <a class="mr-5 hover:text-gray-900" href="{{ url_for('core.permissions') }}">View permissions</a>
+
+
+    </nav>
+  </div>
+</header>
 
 {% block content %}
 {% endblock %}

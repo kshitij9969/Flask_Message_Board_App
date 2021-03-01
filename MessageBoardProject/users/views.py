@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, Blueprint, request, abort
 from flask_login import login_required, login_user, current_user, logout_user
-from MessageBoardProject import db, app
+from MessageBoardApp import db, app
 from MessageBoardProject.users.forms import RegistrationForm, UpdateUserForm, LoginForm
 from MessageBoardProject.models import User
 users_blueprint = Blueprint('users', __name__, template_folder='templates')

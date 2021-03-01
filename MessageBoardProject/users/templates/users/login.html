@@ -3,13 +3,37 @@
 
 {% block content %}
 <div class="container">
-    <form method="POST">
+    <!--<form method="POST">
         {{ form.hidden_tag() }}
         {{ wtf.form_field(form.username, class='form-control', placeholder='username')}}
         {{ wtf.form_field(form.email, class='form-control', placeholder='email')}}
         {{ wtf.form_field(form.password, class='form-control', placeholder='password')}}
         {{ wtf.form_field(form.login, class='btn btn-primary')}}
-    </form>
-
+    </form>-->
+<section class="text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+    <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+      <h1 class="title-font font-medium text-3xl text-gray-900">Login or register to create projects and manage teams across the globe.</h1>
+      <p class="leading-relaxed mt-4">Project Management App allows you to manage your associates, events, activity and of course your project life cycle.</p>
+    </div>
+    <div class="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Log In</h2>
+        <form method="POST">
+        {{ form.hidden_tag()}}
+      <div class="relative mb-4">
+        {{ wtf.form_field(form.username, class='form-control', placeholder='username')}}
+      </div>
+      <div class="relative mb-4">
+          {{ wtf.form_field(form.email, class='form-control', placeholder='email')}}
+          </div>
+        <div class="relative mb-4">
+        {{ wtf.form_field(form.password, class='form-control', placeholder='password')}}
+        </div>
+      {{ wtf.form_field(form.login, class='btn btn-primary')}}
+   </form>
+      <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+    </div>
+  </div>
+</section>
 </div>
 {% endblock %}
